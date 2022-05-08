@@ -13,7 +13,7 @@ pipeline {
     stage('Build Stage') {
       steps {
         echo '********* Build Stage Started **********'
-        bat 'pip install -r requirements.txt'
+        bat 'pip3 install -r requirements.txt'
         bat 'pyinstaller --onefile app.py'
         echo '********* Build Stage Finished **********'
         }
@@ -21,7 +21,7 @@ pipeline {
     stage('Testing Stage') {
       steps {
         echo '********* Test Stage Started **********'
-        bat 'python test.py'
+        bat 'python3 test.py'
         echo '********* Test Stage Finished **********'
       }   
     }
@@ -52,7 +52,7 @@ stage('Deployment Stage'){
                 echo '********* Deploy Stage Started **********'
                 timeout(time : 1, unit : 'MINUTES')
                 {
-                bat 'python app.py'
+                bat 'python3 app.py'
                 }
                 echo '********* Deploy Stage Finished **********'
             }
